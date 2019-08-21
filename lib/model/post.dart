@@ -15,19 +15,19 @@ final List<Post> posts = [
   Post(
     title: 'Candy Shop',
     author: 'Johann',
-    imageUrl: 'http://lorempixel.com/640/480/animals',
+    imageUrl: 'https://resources.ninghao.org/images/candy-shop.jpg',
     tip: 'Global',
   ),
   Post(
     title: 'InfrastructureDistrict Mobility Engineer',
     author: 'Saul',
-    imageUrl: 'http://lorempixel.com/640/480/business',
+    imageUrl: 'https://resources.ninghao.org/images/childhood-in-a-picture.jpg',
     tip: 'IV',
   ),
   Post(
     title: 'Nyasia Bradtke',
     author: 'Mr.',
-    imageUrl: 'http://lorempixel.com/640/480/food',
+    imageUrl: 'https://resources.ninghao.org/images/contained.jpg',
     tip: 'Applications',
   )
 ];
