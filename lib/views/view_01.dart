@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_john/model/post.dart';
 
-class view_01 extends StatelessWidget {
+class view_01 extends StatefulWidget {
+  @override
+  _view_01State createState() => _view_01State();
+}
+
+class _view_01State extends State<view_01> with AutomaticKeepAliveClientMixin {
+  bool get wantKeepAlive => true;
   Widget _listItemBuilder(BuildContext context, int index) {
     return Container(
       color: Colors.white24,
@@ -58,12 +64,10 @@ class view_01 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        child: ListView.builder(
-          itemCount: posts.length,
-          itemBuilder: _listItemBuilder,
-        ),
+    return Container(
+      child: ListView.builder(
+        itemCount: posts.length,
+        itemBuilder: _listItemBuilder,
       ),
     );
   }
