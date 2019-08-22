@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_john/views/view_01.dart';
-import 'package:flutter_john/views/view_02.dart';
-import 'package:flutter_john/views/view_03.dart';
+import 'package:flutter_john/routes/commodityManagement.dart';
+import 'package:flutter_john/routes/purchaseMall.dart';
+import 'package:flutter_john/routes/financialManagement.dart';
+import 'package:flutter_john/routes/merchantManagement.dart';
+import 'package:flutter_john/routes/postsaleEngineer.dart';
+import 'package:flutter_john/routes/wanjiaanCollege.dart';
 
 class page_01 extends StatefulWidget {
   @override
@@ -37,31 +40,37 @@ class _page_01State extends State<page_01> {
       'text': '商品管理',
       'icon': Icons.stay_primary_portrait,
       'color': Colors.blueGrey,
+      'route': commodityManagement(),
     },
     {
       'text': '采购商城',
       'icon': Icons.shop,
       'color': Colors.purple,
+      'route': purchaseMall(),
     },
     {
       'text': '财务管理',
       'icon': Icons.money_off,
       'color': Colors.orange,
+      'route': financialManagement(),
     },
     {
       'text': '商户管理',
       'icon': Icons.business,
       'color': Colors.green,
+      'route': merchantManagement(),
     },
     {
       'text': '售后工程师',
       'icon': Icons.event_busy,
       'color': Colors.deepOrange,
+      'route': postsaleEngineer(),
     },
     {
       'text': '万佳安学院',
       'icon': Icons.collections,
       'color': Colors.redAccent,
+      'route': wanjiaanCollege(),
     },
   ];
   List<Widget> _buildCard(int length) {
@@ -108,34 +117,41 @@ class _page_01State extends State<page_01> {
     return List.generate(length, (int index) {
       return Container(
         width: 62,
-        child: Column(
-          children: <Widget>[
-            Container(
-              width: 48,
-              height: 48,
-              margin: EdgeInsets.only(bottom: 8),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(24),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color.fromRGBO(51, 51, 51, 0.08),
-                      blurRadius: 10.0,
-                    ),
-                  ],
-                ),
-                child: Icon(
-                  functionList[index]['icon'],
-                  color: functionList[index]['color'],
+        child: FlatButton(
+          child: Column(
+            children: <Widget>[
+              Container(
+                width: 48,
+                height: 48,
+                margin: EdgeInsets.only(bottom: 8),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(24),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(51, 51, 51, 0.08),
+                        blurRadius: 10.0,
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    functionList[index]['icon'],
+                    color: functionList[index]['color'],
+                  ),
                 ),
               ),
-            ),
-            Text(
-              '商品管理',
-              style: TextStyle(fontSize: 12),
-            )
-          ],
+              Text(
+                functionList[index]['text'],
+                style: TextStyle(fontSize: 12),
+              ),
+            ],
+          ),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return functionList[index]['route'];
+            }));
+          },
         ),
       );
     });
@@ -164,10 +180,11 @@ class _page_01State extends State<page_01> {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 23, left: 8, right: 8),
-            child: Wrap(
-              spacing: 34,
-              runSpacing: 24,
+            margin: EdgeInsets.only(top: 23),
+            child: GridView.count(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              crossAxisCount: 4,
               children: _buildFunctionList(functionList.length),
             ),
           )
