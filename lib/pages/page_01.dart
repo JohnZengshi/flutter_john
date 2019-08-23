@@ -141,21 +141,83 @@ class _page_01State extends State<page_01> {
     });
   }
 
+  List<Widget> _buildToDoCard(int length) {
+    return List.generate(length, (int index) {
+      return Container(
+        height: 72,
+        margin: EdgeInsets.only(bottom: 12, left: 12, right: 12),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12.0),
+            boxShadow: [
+              BoxShadow(
+                color: Color.fromRGBO(0, 0, 0, 0.2),
+                offset: Offset(0.0, 4.0),
+                blurRadius: 10.0,
+              )
+            ],
+          ),
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      '新订单',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      '2018.04.08',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Color.fromRGBO(170, 170, 170, 1),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 5),
+                Text(
+                  '恒安安防提交了订单（零售商采购单），请尽快安排发货',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Color.fromRGBO(170, 170, 170, 1),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.symmetric(horizontal: 12.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        shrinkWrap: true,
         children: <Widget>[
           SizedBox(height: 8),
-          Text(
-            '今日业绩',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 12.0),
+            child: Text(
+              '今日业绩',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
           ),
           Container(
             margin: EdgeInsets.only(top: 16),
+            padding: EdgeInsets.symmetric(horizontal: 12.0),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -164,13 +226,48 @@ class _page_01State extends State<page_01> {
             ),
           ),
           Container(
+            padding: EdgeInsets.symmetric(horizontal: 12.0),
             margin: EdgeInsets.only(top: 23, left: 8, right: 8),
             child: Wrap(
               spacing: 34,
               runSpacing: 24,
               children: _buildFunctionList(functionList.length),
             ),
-          )
+          ),
+          SizedBox(height: 30),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  '待办事项',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Row(
+                  children: <Widget>[
+                    Text(
+                      '详情',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Color.fromRGBO(170, 170, 170, 1),
+                      ),
+                    ),
+                    SizedBox(width: 11.5),
+                    Icon(
+                      Icons.arrow_forward,
+                      color: Color.fromRGBO(170, 170, 170, 1),
+                      size: 14,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          SizedBox(height: 16),
+          Column(
+            children: _buildToDoCard(50),
+          ),
         ],
       ),
     );
