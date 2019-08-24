@@ -8,12 +8,12 @@ import 'package:flutter_john/routes/postsaleEngineer.dart';
 import 'package:flutter_john/routes/wanjiaanCollege.dart';
 import 'package:flutter_john/components/sliverStickyDelegate.dart';
 
-class page_01 extends StatefulWidget {
+class home extends StatefulWidget {
   @override
-  _page_01State createState() => _page_01State();
+  _homeState createState() => _homeState();
 }
 
-class _page_01State extends State<page_01> {
+class _homeState extends State<home> {
   var cardList = [
     {
       'text': '订单金额',
@@ -222,18 +222,22 @@ class _page_01State extends State<page_01> {
       color: Colors.white,
       child: CustomScrollView(
         slivers: <Widget>[
+          SliverAppBar(
+            title: Text(
+              '今日业绩',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.white,
+          ),
           SliverToBoxAdapter(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(top: 8),
-                  padding: EdgeInsets.symmetric(horizontal: 12.0),
-                  child: Text(
-                    '今日业绩',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                ),
                 Container(
                   margin: EdgeInsets.only(top: 16),
                   padding: EdgeInsets.symmetric(horizontal: 12.0),
@@ -257,46 +261,39 @@ class _page_01State extends State<page_01> {
               ],
             ),
           ),
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: sliverStickyDelegate(
-              minHeight: 50,
-              maxHeight: 100,
-              child: DecoratedBox(
-                decoration: BoxDecoration(),
-                child: Container(
-                  color: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 12.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        '待办事项',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Text(
-                            '详情',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Color.fromRGBO(170, 170, 170, 1),
-                            ),
-                          ),
-                          SizedBox(width: 11.5),
-                          Icon(
-                            Icons.arrow_forward,
-                            color: Color.fromRGBO(170, 170, 170, 1),
-                            size: 14,
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
+          SliverAppBar(
+            title: Text(
+              '待办事项',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
             ),
+            automaticallyImplyLeading: false,
+            actions: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(right: 12),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      '详情',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Color.fromRGBO(170, 170, 170, 1),
+                      ),
+                    ),
+                    Icon(
+                      Icons.arrow_forward,
+                      color: Color.fromRGBO(170, 170, 170, 1),
+                      size: 14,
+                    ),
+                  ],
+                ),
+              )
+            ],
+            pinned: true,
+            backgroundColor: Colors.white,
           ),
           SliverList(
             delegate: SliverChildListDelegate(_buildToDoCard(50)),

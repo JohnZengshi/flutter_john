@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class bottomMenuBar extends StatefulWidget {
+class BottomMenuBar extends StatefulWidget {
   @override
-  _bottomMenuBarState createState() => _bottomMenuBarState();
+  _BottomMenuBarState createState() => _BottomMenuBarState();
 }
 
-class _bottomMenuBarState extends State<bottomMenuBar> {
+class _BottomMenuBarState extends State<BottomMenuBar> {
   int $currentIndex = 0;
 
   void _onTapHandler(int index) {

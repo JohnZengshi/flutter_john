@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class appBar extends StatefulWidget {
+class AppBar extends StatefulWidget {
   @override
-  _appBarState createState() => _appBarState();
+  _AppBarState createState() => _AppBarState();
 }
 
-class _appBarState extends State<appBar> {
+class _AppBarState extends State<AppBar> {
   int $currentIndex = 0;
   void _onTapHandler(int index) {
     setState(() {

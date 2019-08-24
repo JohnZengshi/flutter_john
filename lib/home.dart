@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_john/pages/page_01.dart';
-import 'package:flutter_john/pages/page_02.dart';
+import 'package:flutter_john/pages/home.dart';
+import 'package:flutter_john/pages/order.dart';
+import 'package:flutter_john/pages/workOrder.dart';
+import 'package:flutter_john/pages/mine.dart';
 import 'package:flutter_john/components/sideDrawer.dart';
 
 class Home extends StatefulWidget {
@@ -10,23 +12,51 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var pageList = [
+  final pageList = [
     {
-      'text': 'accessibility',
+      'text': '首页',
       'textColor': Colors.black,
-      'barColor': Colors.white
+      'barColor': Colors.white,
+      'icon': Icon(Icons.home),
+      'page': home(),
     },
     {
-      'text': 'outlined_flag',
+      'text': '订单',
       'textColor': Colors.white,
-      'barColor': Colors.blue
+      'barColor': Colors.blue,
+      'icon': Icon(Icons.pages),
+      'page': order(),
+    },
+    {
+      'text': '工单',
+      'textColor': Colors.white,
+      'barColor': Colors.blue,
+      'icon': Icon(Icons.work),
+      'page': workOrder(),
+    },
+    {
+      'text': '我的',
+      'textColor': Colors.white,
+      'barColor': Colors.blue,
+      'icon': Icon(Icons.person),
+      'page': mine(),
     },
   ];
 
   int $currentIndex = 0;
-  void _onTapHandler(int index) {
-    setState(() {
-      $currentIndex = index;
+
+  List<BottomNavigationBarItem> _buildBottomNavigationBarItem(int length) {
+    return List.generate(length, (int index) {
+      return BottomNavigationBarItem(
+        icon: pageList[index]['icon'],
+        title: Text(pageList[index]['text']),
+      );
+    });
+  }
+
+  List<Widget> _buildPageWidget(int length) {
+    return List.generate(length, (int index) {
+      return pageList[index]['page'];
     });
   }
 
@@ -64,25 +94,18 @@ class _HomeState extends State<Home> {
       ),
       body: IndexedStack(
         index: $currentIndex,
-        children: [
-          new page_01(),
-          new page_02(),
-        ],
+        children: _buildPageWidget(pageList.length),
       ),
-      drawer: sideDrawer(),
+      drawer: SideDrawer(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: $currentIndex,
-        onTap: _onTapHandler,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.accessibility),
-            title: Text('accessibility'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.outlined_flag),
-            title: Text('outlined_flag'),
-          )
-        ],
+        onTap: (int index) {
+          setState(() {
+            $currentIndex = index;
+          });
+        },
+        items: _buildBottomNavigationBarItem(pageList.length),
+        type: BottomNavigationBarType.fixed,
       ),
     );
   }

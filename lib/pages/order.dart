@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class page_02 extends StatelessWidget {
+class order extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Icon(
-        Icons.outlined_flag,
+        Icons.pages,
         size: 100,
         color: Colors.grey,
       ),

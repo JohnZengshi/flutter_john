@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class sideDrawer extends StatelessWidget {
+class SideDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
