@@ -35,8 +35,14 @@ class _commodityManagementState extends State<commodityManagement> {
           child: Column(
             children: <Widget>[
               GoodsCard(),
-              Card1(),
-              Card2(),
+              GoodsCard(),
+              GoodsCard(),
+              GoodsCard(),
+              GoodsCard(),
+              GoodsCard(),
+              GoodsCard(),
+              // Card1(),
+              // Card2(),
             ],
           ),
         ),

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
@@ -256,8 +258,38 @@ class GoodsCard extends StatelessWidget {
               children: <Widget>[
                 Container(
                   height: 94,
-                  child: Center(
-                    child: Text('heard'),
+                  child: Row(
+                    children: <Widget>[
+                      Image(
+                        image:
+                            NetworkImage('http://lorempixel.com/640/480/food'),
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              DecoratedBox(
+                                decoration: BoxDecoration(),
+                                child: Text('智能门锁'),
+                              ),
+                              Text('万佳安智能指纹锁防盗门锁L5')
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Text('¥1988'),
+                              Text('货号: 123456789'),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Text('门店销量: 0'),
+                              Text('门店库存库存123')
+                            ],
+                          )
+                        ],
+                      )
+                    ],
                   ),
                 ),
                 Expandable(
@@ -268,19 +300,84 @@ class GoodsCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Row(
-                  children: <Widget>[
-                    Builder(
-                      builder: (context) {
-                        return ExpandIcon(
-                          onPressed: (value) {
-                            ExpandableController.of(context).toggle();
-                          },
-                        );
-                      },
+                DecoratedBox(
+                  decoration: BoxDecoration(
+                    border: Border(
+                      top: BorderSide(
+                        width: 1,
+                        color: Color.fromRGBO(247, 247, 247, 1),
+                      ),
                     ),
-                  ],
-                )
+                  ),
+                  child: Container(
+                    height: 50,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(left: 11),
+                              child: Builder(
+                                builder: (context) {
+                                  return Transform.rotate(
+                                    angle: pi /
+                                        (ExpandableController.of(context)
+                                                .expanded
+                                            ? 1
+                                            : 0.1),
+                                    child: ExpandIcon(
+                                      size: 24,
+                                      onPressed: (value) {
+                                        ExpandableController.of(context)
+                                            .toggle();
+                                      },
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                            Text(
+                              '已上架',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Theme.of(context).accentColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(right: 12),
+                              child: OutlineButton(
+                                onPressed: () {},
+                                textColor: Colors.grey,
+                                child:
+                                    Text('已下架', style: TextStyle(fontSize: 12)),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(right: 12),
+                              child: FlatButton(
+                                onPressed: () {},
+                                child: Text('编辑'),
+                                textColor: Colors.white,
+                                color: Color.fromRGBO(255, 152, 110, 1),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

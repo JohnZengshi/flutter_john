@@ -169,7 +169,7 @@ class _homeState extends State<home> {
             borderRadius: BorderRadius.circular(12.0),
             boxShadow: [
               BoxShadow(
-                color: Color.fromRGBO(0, 0, 0, 0.2),
+                color: Color.fromRGBO(51, 51, 51, 0.08),
                 offset: Offset(0.0, 4.0),
                 blurRadius: 10.0,
               )
