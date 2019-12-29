@@ -31,21 +31,21 @@ class _commodityManagementState extends State<commodityManagement> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(top: 14, right: 12, left: 12),
-          child: Column(
-            children: <Widget>[
-              GoodsCard(),
-              GoodsCard(),
-              GoodsCard(),
-              GoodsCard(),
-              GoodsCard(),
-              GoodsCard(),
-              GoodsCard(),
-              // Card1(),
-              // Card2(),
-            ],
-          ),
-        ),
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(top: 14, right: 12, left: 12),
+            child: Column(
+              children: <Widget>[
+                GoodsCard(),
+                GoodsCard(),
+                GoodsCard(),
+                GoodsCard(),
+                GoodsCard(),
+                GoodsCard(),
+                GoodsCard(),
+                // Card1(),
+                // Card2(),
+              ],
+            )),
       ),
     );
   }
